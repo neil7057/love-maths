@@ -52,7 +52,7 @@ function runGame(gameType) {
 
 
 /**
- * Checks the answer against teh first element in
+ * Checks the answer against the first element in
  * the returned calculateCorrectAnswer array
  */
 function checkAnswer() {
@@ -131,7 +131,17 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 function displayDivisionQuestion(operand1, operand2) {
-    document.getElementById('operand1').textContent = operand1;
-    document.getElementById('operand2').textContent = operand2;
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;  
+
+    // test whch operand is larger and use Math.floor to calculate integer multiplation and replace value of operand1
+    if (operand1 > operand2) {
+        let maxdiv = Math.floor(operand1 / operand2);
+        document.getElementById("operand1").textContent = maxdiv*operand2;
+    } else {
+        let maxdiv = Math.floor(operand2 / operand1);
+        document.getElementById("operand1").textContent = maxdiv*operand1;
+    }
+
     document.getElementById('operator').textContent = "/";
 }
